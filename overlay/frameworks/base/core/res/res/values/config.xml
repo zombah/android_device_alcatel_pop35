@@ -35,4 +35,7 @@
    <bool name="config_enableCpuBoostForScroller">true</bool>
    <!-- Should the device show AM/PM in unlock screen -->
    <bool name="config_show_ampm_in_unlock_screen">true</bool>
+   <!-- Configuartion to support 7bit Ascii encoding and decoding
+       for long messages. -->
+   <bool name="config_ascii_7bit_support_for_long_message">true</bool>
 </resources>
