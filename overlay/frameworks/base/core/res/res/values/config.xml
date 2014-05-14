@@ -38,4 +38,6 @@
    <!-- Configuartion to support 7bit Ascii encoding and decoding
        for long messages. -->
    <bool name="config_ascii_7bit_support_for_long_message">true</bool>
+    <!-- Make things go fast by disabling Fading Marquee for Textview -->
+    <bool name="config_ui_enableFadingMarquee">false</bool>
 </resources>
