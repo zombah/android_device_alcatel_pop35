@@ -1,7 +1,7 @@
-DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8916_32/overlay
+DEVICE_PACKAGE_OVERLAYS := device/qcom/ferrum/overlay
 
 TARGET_USES_QCOM_BSP := true
-ifeq ($(TARGET_PRODUCT),msm8916_32)
+ifeq ($(TARGET_PRODUCT),ferrum)
 TARGET_USES_QCA_NFC := true
 endif
 ifeq ($(TARGET_USES_QCOM_BSP), true)
@@ -12,25 +12,25 @@ endif #TARGET_USES_QCOM_BSP
 
 
 
-# media_profiles and media_codecs xmls for 8916
+# media_profiles and media_codecs xmls for ferrum
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msm8916_32/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8916_32/media/media_codecs_8916.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/qcom/ferrum/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
+                      device/qcom/ferrum/media/media_codecs_8916.xml:system/etc/media_codecs.xml
 endif
 
 $(call inherit-product, device/qcom/common/common.mk)
 
-PRODUCT_NAME := msm8916_32
-PRODUCT_DEVICE := msm8916_32
+PRODUCT_NAME := ferrum
+PRODUCT_DEVICE := ferrum
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf \
-    device/qcom/msm8916_32/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/qcom/msm8916_32/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
-    device/qcom/msm8916_32/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
-    device/qcom/msm8916_32/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
-    device/qcom/msm8916_32/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/qcom/ferrum/audio_policy.conf:system/etc/audio_policy.conf \
+    device/qcom/ferrum/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/qcom/ferrum/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+    device/qcom/ferrum/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
+    device/qcom/ferrum/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
+    device/qcom/ferrum/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # NFC packages
 ifeq ($(TARGET_USES_QCA_NFC),true)
@@ -76,9 +76,9 @@ endif # TARGET_USES_QCA_NFC
 PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8916_32/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    device/qcom/ferrum/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
-# Feature definition files for msm8916
+# Feature definition files for ferrum
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -103,8 +103,8 @@ PRODUCT_PACKAGES += wcnss_service
 
 #wlan driver
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8916_32/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msm8916_32/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
+    device/qcom/ferrum/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/qcom/ferrum/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \

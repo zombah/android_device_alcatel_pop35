@@ -1,5 +1,5 @@
 #
-# system.prop for msm8916
+# system.prop for ferrum
 #
 
 #rild.libpath=/system/lib/libreference-ril.so
@@ -99,7 +99,7 @@ ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
-#Set for msm8916
+#Set for ferrum
 tunnel.audio.encode = false
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=32
@@ -130,3 +130,7 @@ persist.debug.wfd.enable=1
 #propery to enable VDS WFD solution
 persist.hwc.enable_vds=1
 ro.min_freq=800000
+
+#Enable software composition
+ro.config.low_ram=true
+ro.kernel.qemu=1
