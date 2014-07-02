@@ -34,7 +34,7 @@ endif
 # Compile Linux Kernel
 #----------------------------------------------------------------------
 ifeq ($(KERNEL_DEFCONFIG),)
-    KERNEL_DEFCONFIG := msm8916_defconfig
+    KERNEL_DEFCONFIG := msmferrum_defconfig
 endif
 
 include kernel/AndroidKernel.mk
