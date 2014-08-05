@@ -23,6 +23,11 @@ $(call inherit-product, device/qcom/common/common.mk)
 PRODUCT_NAME := ferrum
 PRODUCT_DEVICE := ferrum
 
+
+
+#Android EGL implementation
+PRODUCT_PACKAGES += libGLES_android
+
 # Audio configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/ferrum/audio_policy.conf:system/etc/audio_policy.conf \
@@ -70,17 +75,20 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
 # Enable NFC Forum testing by temporarily changing the PRODUCT_BOOT_JARS
 # line has to be in sync with build/target/product/core_base.mk
-PRODUCT_BOOT_JARS := core:conscrypt:okhttp:core-junit:bouncycastle:ext:com.android.nfc.helper:framework:framework2:telephony-common:voip-common:mms-common:android.policy:services:apache-xml:webviewchromium:telephony-msim
 endif # TARGET_USES_QCA_NFC
 
-PRODUCT_BOOT_JARS += qcmediaplayer:WfdCommon:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
+PRODUCT_BOOT_JARS += qcmediaplayer \
+                     WfdCommon \
+                     oem-services \
+                     qcom.fmradio \
+                     org.codeaurora.Performance \
+                     vcard
 # Listen configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/ferrum/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 # Feature definition files for ferrum
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \

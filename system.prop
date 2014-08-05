@@ -25,7 +25,6 @@ debug.composition.type=c2d
 persist.hwc.mdpcomp.enable=true
 debug.mdpcomp.logs=0
 dalvik.vm.heapsize=36m
-dalvik.vm.heapgrowthlimit=128m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 
@@ -40,11 +39,6 @@ persist.demo.hdmirotationlock=false
 # system props for the cne module
 #
 persist.cne.feature=1
-
-#
-# system props for the dpm module
-#
-persist.dpm.feature=0
 
 #system props for the MM modules
 media.stagefright.enable-player=true
@@ -70,21 +64,16 @@ persist.timed.enable=true
 #
 # system prop for opengles version
 #
-# 196608 is decimal for 0x30000 to report version 3
-ro.opengles.version=196608
+# 131072 is decimal for 0x20000 to report version 2
+ro.opengles.version=131072
 
 # System property for cabl
-ro.qualcomm.cabl=2
+ro.qualcomm.cabl=0
 
 #
 # System props for telephony
 # System prop to turn on CdmaLTEPhone always
 telephony.lteOnCdmaDevice=1
-
-#
-# System props for bluetooh
-# System prop to turn on hfp client
-bluetooth.hfp.client=1
 
 #Simulate sdcard on /data/media
 #
@@ -101,10 +90,11 @@ persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 #Set for ferrum
 tunnel.audio.encode = false
+ro.config.low_ram=true
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=32
 #Enable offload audio video playback by default
-av.offload.enable=false
+av.offload.enable=true
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
 #
@@ -114,23 +104,13 @@ ro.fm.transmitter=false
 #enable dsp gapless mode by default
 audio.offload.gapless.enabled=true
 
-#Audio voice concurrency related flags
-voice.playback.conc.disabled=true
-voice.record.conc.disabled=true
-voice.voip.conc.disabled=true
-
 #Set composition for USB
 persist.sys.usb.config=diag,serial_smd,rmnet_bam,adb
 
-# set max background services
-ro.config.max_starting_bg=8
+# set lcd density
+ro.sf.lcd_density=480
 
 #property to enable user to access Google WFD settings
 persist.debug.wfd.enable=1
 #propery to enable VDS WFD solution
 persist.hwc.enable_vds=1
-ro.min_freq=800000
-
-#Enable software composition
-ro.config.low_ram=true
-ro.kernel.qemu=1
