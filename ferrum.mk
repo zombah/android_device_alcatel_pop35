@@ -32,7 +32,6 @@ PRODUCT_PACKAGES += libGLES_android
 PRODUCT_COPY_FILES += \
     device/qcom/ferrum/audio_policy.conf:system/etc/audio_policy.conf \
     device/qcom/ferrum/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/qcom/ferrum/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
     device/qcom/ferrum/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
     device/qcom/ferrum/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
     device/qcom/ferrum/mixer_paths.xml:system/etc/mixer_paths.xml
