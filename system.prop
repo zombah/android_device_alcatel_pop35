@@ -50,7 +50,9 @@ media.stagefright.enable-scan=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 #codecs:(PARSER_)AAC AC3 ASF AVI DTS 3G2 MP2TS QCP FLAC
-mm.enable.qcom_parser=168563
+mm.enable.qcom_parser=3314291
+# Default to AwesomePlayer
+media.stagefright.use-awesome=true
 
 #
 # system props for the data modules
@@ -93,8 +95,10 @@ tunnel.audio.encode = false
 ro.config.low_ram=true
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=32
+#use VERY_HIGH_QUALITY for audio resampler
+af.resampler.quality=4
 #Enable offload audio video playback by default
-av.offload.enable=true
+av.offload.enable=false
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
 #
