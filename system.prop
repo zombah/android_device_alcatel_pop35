@@ -1,5 +1,5 @@
 #
-# system.prop for ferrum
+# system.prop for msm8909
 #
 
 #rild.libpath=/system/lib/libreference-ril.so
@@ -90,7 +90,7 @@ ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
-#Set for ferrum
+#Set for msm8909
 tunnel.audio.encode = false
 ro.config.low_ram=true
 #Buffer size in kbytes for compress offload playback
