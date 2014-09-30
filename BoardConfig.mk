@@ -54,6 +54,11 @@ BOARD_KERNEL_PAGESIZE    := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
 
+
+# Support to build images for 2K NAND page
+BOARD_KERNEL_2KPAGESIZE := 2048
+BOARD_KERNEL_2KSPARESIZE := 64
+
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
