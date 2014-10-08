@@ -14,8 +14,8 @@ endif #TARGET_USES_QCOM_BSP
 
 # media_profiles and media_codecs xmls for msm8909
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msm8909/media/media_profiles_8916.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8909/media/media_codecs_8916.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/qcom/msm8909/media/media_profiles_8909.xml:system/etc/media_profiles.xml \
+                      device/qcom/msm8909/media/media_codecs_8909.xml:system/etc/media_codecs.xml
 endif
 
 $(call inherit-product, device/qcom/common/common.mk)
