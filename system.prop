@@ -110,7 +110,7 @@ ro.fm.transmitter=false
 audio.offload.gapless.enabled=true
 
 #Set composition for USB
-persist.sys.usb.config=diag,adb
+persist.sys.usb.config=diag,serial_smd,rmnet_qti_bam,adb
 
 # set lcd density
 ro.sf.lcd_density=480
