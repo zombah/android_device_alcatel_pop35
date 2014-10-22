@@ -115,6 +115,9 @@ persist.sys.usb.config=diag,serial_smd,rmnet_qti_bam,adb
 # set lcd density
 ro.sf.lcd_density=480
 
+# set max background services
+ro.config.max_starting_bg=8
+
 #property to enable user to access Google WFD settings
 persist.debug.wfd.enable=1
 #propery to enable VDS WFD solution
