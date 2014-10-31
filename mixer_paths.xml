@@ -575,6 +575,18 @@
         <ctl name="IIR1 INP1 Volume" value="53" />
     </path>
 
+    <path name="voip-headphones">
+        <path name="headphones" />
+    </path>
+
+    <path name="voip-speaker">
+        <path name="speaker" />
+    </path>
+
+    <path name="voip-handset">
+        <path name="handset" />
+    </path>
+
     <path name="voice-handset">
         <path name="sidetone-handset" />
         <path name="handset" />
