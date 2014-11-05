@@ -28,6 +28,11 @@ dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 
+#enable dirty rect
+debug.sf.swaprect=1
+#enable app buffer composition
+debug.sf.hwc.canUseABC=1
+
 #ro.hdmi.enable=true
 #tunnel.decode=true
 #tunnel.audiovideo.decode=true
