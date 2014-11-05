@@ -132,3 +132,6 @@ ro.config.max_starting_bg=8
 persist.debug.wfd.enable=1
 #propery to enable VDS WFD solution
 persist.hwc.enable_vds=1
+
+#property to enable image unload by audio HAL
+sys.audio.init=false
