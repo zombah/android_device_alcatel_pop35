@@ -83,7 +83,9 @@ PRODUCT_BOOT_JARS += qcmediaplayer \
                      oem-services \
                      qcom.fmradio \
                      org.codeaurora.Performance \
-                     vcard
+                     vcard \
+                     tcmiface
+
 # Listen configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/msm8909/listen_platform_info.xml:system/etc/listen_platform_info.xml
