@@ -30,7 +30,7 @@
 <!ATTLIST EncoderProfile duration (30|60) #REQUIRED>
 <!ATTLIST EncoderProfile cameraId (0|1) #REQUIRED>
 <!ELEMENT Video EMPTY>
-<!ATTLIST Video codec (h264) #REQUIRED>
+<!ATTLIST Video codec (h264|h263|m4v) #REQUIRED>
 <!ATTLIST Video bitRate CDATA #REQUIRED>
 <!ATTLIST Video width CDATA #REQUIRED>
 <!ATTLIST Video height CDATA #REQUIRED>
@@ -48,7 +48,7 @@
 <!ELEMENT EncoderOutputFileFormat EMPTY>
 <!ATTLIST EncoderOutputFileFormat name (mp4|3gp) #REQUIRED>
 <!ELEMENT VideoEncoderCap EMPTY>
-<!ATTLIST VideoEncoderCap name (h264) #REQUIRED>
+<!ATTLIST VideoEncoderCap name (h264|h263|m4v) #REQUIRED>
 <!ATTLIST VideoEncoderCap enabled (true|false) #REQUIRED>
 <!ATTLIST VideoEncoderCap minBitRate CDATA #REQUIRED>
 <!ATTLIST VideoEncoderCap maxBitRate CDATA #REQUIRED>
@@ -669,6 +669,22 @@
         minFrameRate="15" maxFrameRate="30"
         maxHFRFrameWidth="800" maxHFRFrameHeight="480"
         maxHFRMode="60"  />
+
+    <VideoEncoderCap name="h263" enabled="true"
+        minBitRate="64000" maxBitRate="2000000"
+        minFrameWidth="176" maxFrameWidth="854"
+        minFrameHeight="144" maxFrameHeight="480"
+        minFrameRate="15" maxFrameRate="30"
+        maxHFRFrameWidth="0" maxHFRFrameHeight="0"
+        maxHFRMode="0"  />
+
+    <VideoEncoderCap name="m4v" enabled="true"
+        minBitRate="64000" maxBitRate="2000000"
+        minFrameWidth="176" maxFrameWidth="854"
+        minFrameHeight="144" maxFrameHeight="480"
+        minFrameRate="15" maxFrameRate="30"
+        maxHFRFrameWidth="0" maxHFRFrameHeight="0"
+        maxHFRMode="0"  />
 
     <AudioEncoderCap name="aac" enabled="true"
         minBitRate="8000" maxBitRate="96000"
