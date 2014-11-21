@@ -10,7 +10,8 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 endif #TARGET_USES_QCOM_BSP
 
 
-
+#QTIC flag
+-include $(QCPATH)/common/config/qtic-config.mk
 
 # media_profiles and media_codecs xmls for msm8909
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
