@@ -135,3 +135,6 @@ persist.hwc.enable_vds=1
 
 #property to enable image unload by audio HAL
 sys.audio.init=false
+
+#property to change touch screen resolution
+persist.sys.synaptics_dsx.qhd=false
