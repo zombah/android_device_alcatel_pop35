@@ -129,3 +129,8 @@ PRODUCT_PACKAGES += \
 AntHalService \
 libantradio \
 antradio_app
+
+# Add the overlay path
+PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res-overlay \
+        $(PRODUCT_PACKAGE_OVERLAYS)
+
