@@ -140,3 +140,6 @@ sys.audio.init=false
 
 #property to change touch screen resolution
 persist.sys.synaptics_dsx.qhd=false
+
+#HWUI properties
+ro.hwui.text_large_cache_height=2048
