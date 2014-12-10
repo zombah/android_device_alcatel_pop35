@@ -190,6 +190,15 @@ on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
     start imscmservice
 
+service touch /system/bin/sh /system/etc/init.qti.synaptics_dsx_qhd.sh
+   class late_start
+   user root
+   group root
+   oneshot
+   disabled
+
 on property:persist.sys.synaptics_dsx.qhd=true
-    write /sys/class/input/input2/set_abs_x_axis 540
-    write /sys/class/input/input2/set_abs_y_axis 960
+   start touch
+
+on property:persist.sys.synaptics_dsx.qhd=false
+   stop touch
