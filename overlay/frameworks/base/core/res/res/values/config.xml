@@ -62,4 +62,7 @@
    <integer name="ascrollboost_timeout">50</integer>
    <integer name="ascrollboost_cpuboost">0x20D</integer>
    <integer name="ascrollboost_pcdisbl">0x101</integer>
+
+   <!-- Enable button light -->
+   <bool name="config_button_light_enabled">true</bool>
 </resources>
