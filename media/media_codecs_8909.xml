@@ -54,6 +54,7 @@
             <Quirk name="requires-loaded-to-idle-after-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.google.h263.encoder" type="video/3gpp" />
+        <MediaCodec name="OMX.google.vp8.encoder" type="video/x-vnd.on2.vp8" />
     </Encoders>
     <Decoders>
         <!-- Audio Software  -->
