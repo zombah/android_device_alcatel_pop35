@@ -152,3 +152,6 @@ persist.sys.synaptics_dsx.qhd=false
 
 #HWUI properties
 ro.hwui.text_large_cache_height=2048
+
+# enable sta proxy bydefault
+persist.mm.sta.enable=1
