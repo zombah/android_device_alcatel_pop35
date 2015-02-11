@@ -24,7 +24,11 @@ $(call inherit-product, device/qcom/common/common.mk)
 PRODUCT_NAME := msm8909
 PRODUCT_DEVICE := msm8909
 
-
+# font rendering engine feature switch
+-include $(QCPATH)/common/config/rendering-engine.mk
+ifneq (,$(strip $(wildcard $(PRODUCT_RENDERING_ENGINE_REVLIB))))
+    MULTI_LANG_ENGINE := REVERIE
+endif
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
@@ -132,6 +136,10 @@ PRODUCT_PACKAGES += \
 AntHalService \
 libantradio \
 antradio_app
+
+# Defined the locales
+PRODUCT_LOCALES += th_TH vi_VN tl_PH hi_IN ar_EG ru_RU tr_TR pt_BR bn_IN mr_IN ta_IN te_IN zh_HK \
+        in_ID my_MM km_KH sw_KE uk_UA pl_PL sr_RS sl_SI fa_IR kn_IN ml_IN ur_IN gu_IN or_IN
 
 # Add the overlay path
 PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res-overlay \
