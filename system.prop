@@ -83,6 +83,9 @@ ro.opengles.version=196608
 # System property for cabl
 ro.qualcomm.cabl=2
 
+# System property for QDCM
+persist.tuning.qdcm=1
+
 #
 # System props for telephony
 # System prop to turn on CdmaLTEPhone always
