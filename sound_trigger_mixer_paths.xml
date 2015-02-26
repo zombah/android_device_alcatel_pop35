@@ -76,9 +76,8 @@
         <!-- this is to avoid codec mute when device is not enabled first -->
         <ctl name="LOOPBACK Mode" value="ENABLE" />
         <!-- actual device ebable sequence -->
-        <ctl name="DEC1 MUX" value="ADC2" />
-        <ctl name="ADC2 MUX" value="INP3" />
-        <ctl name="ADC3 Volume" value="8" />
+        <ctl name="DEC1 MUX" value="ADC1" />
+        <ctl name="ADC1 Volume" value="8" />
     </path>
 
 </mixer>
