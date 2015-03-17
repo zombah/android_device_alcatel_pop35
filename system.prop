@@ -180,3 +180,6 @@ ro.cutoff_voltage_mv=3200
 
 #To check core ctl presence
 ro.core_ctl_present=1
+
+#Factory Reset Protection
+ro.frp.pst=/dev/block/bootdevice/by-name/config
