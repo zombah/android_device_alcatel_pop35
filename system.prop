@@ -183,3 +183,7 @@ ro.core_ctl_present=1
 
 #Factory Reset Protection
 ro.frp.pst=/dev/block/bootdevice/by-name/config
+
+#min/max cpu in core control
+ro.core_ctl_min_cpu=2
+ro.core_ctl_max_cpu=4
