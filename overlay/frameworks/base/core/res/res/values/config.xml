@@ -51,6 +51,7 @@
    <integer name="launchboost_idleloadboost_param">0x410A</integer>
    <integer name="launchboost_idlenrrunboost_param">0x4201</integer>
    <integer name="launchboost_preferidle_param">0x3E01</integer>
+   <integer name="launchboost_cpunumboost_param">0x704</integer>
    <!-- Whether cpu boost is enabled for animation during exit and entry -->
    <bool name="config_enablePerfBoostForAnimation">true</bool>
    <integer name="animationboost_cpuboost_param">0x20B</integer>
