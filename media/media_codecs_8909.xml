@@ -50,20 +50,20 @@
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="requires-loaded-to-idle-after-allocation" />
-            <Limit name="size" min="16x16" max="800x480" />
+            <Limit name="size" min="32x32" max="800x480" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="45000" />
-            <Limit name="bitrate" range="1-8000000" />
+            <Limit name="bitrate" range="1-2000000" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.h263sw" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="requires-loaded-to-idle-after-allocation" />
-            <Limit name="size" min="16x16" max="720x576" />
+            <Limit name="size" min="32x32" max="800x480" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="blocks-per-second" min="1" max="48600" />
+            <Limit name="blocks-per-second" min="1" max="45000" />
             <Limit name="bitrate" range="1-2000000" />
         </MediaCodec>
     </Encoders>
@@ -119,7 +119,7 @@
         <MediaCodec name="OMX.ittiam.video.decoder.divx" type="video/divx" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="size" min="48x32" max="1920x1088" />
+            <Limit name="size" min="16x16" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="244800" />
@@ -128,7 +128,7 @@
         <MediaCodec name="OMX.ittiam.video.decoder.divx4" type="video/divx4" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="size" min="48x32" max="1920x1088" />
+            <Limit name="size" min="16x16" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="244800" />
@@ -139,7 +139,7 @@
             <Type name="video/mp4v-esdp" />
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="size" min="48x32" max="1920x1088" />
+            <Limit name="size" min="16x16" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="244800" />
@@ -148,7 +148,7 @@
         <MediaCodec name="OMX.ittiam.video.decoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Limit name="size" min="48x32" max="854x480" />
+            <Limit name="size" min="16x16" max="854x480" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="48600" />
