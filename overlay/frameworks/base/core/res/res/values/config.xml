@@ -35,6 +35,9 @@
    <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
    <!-- Whether cpu boost is enabled for overscroller fling. -->
    <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
+   <!-- Configuartion to support 7bit Ascii encoding and decoding
+   for long messages. -->
+   <bool name="config_ascii_7bit_support_for_long_message">true</bool>
    <integer name="flingboost_cpuboost_param">0x20B</integer>
    <integer name="flingboost_preferidle_param">0x3E01</integer>
    <!-- Whether cpu boost is enabled for horizontal scroll. -->
