@@ -88,9 +88,7 @@ ro.qualcomm.cabl=2
 sys.io.scheduler=bfq
 
 # Storage
-ro.crypto.fuse_sdcard=true
 ro.sys.umsdirtyratio=20
-persist.fuse_sdcard=true
 
 # Telephony
 DEVICE_PROVISIONED=1
