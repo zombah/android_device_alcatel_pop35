@@ -170,6 +170,9 @@ service imsstarter /system/bin/sh /system/etc/init.qti.ims.sh
     class main
     oneshot
 
+on property:vold.decrypt=trigger_restart_framework
+    start imsstarter
+
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
