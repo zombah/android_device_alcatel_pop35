@@ -32,6 +32,8 @@ persist.demo.hdmirotationlock=false
 debug.sf.swaprect=1
 #enable app buffer composition
 debug.sf.hwc.canUseABC=1
+# disable vsync for cpu render apps
+debug.cpurend.vsync=false
 
 #ro.hdmi.enable=true
 #tunnel.decode=true
