@@ -48,7 +48,7 @@
    <bool name="config_enableCpuBoostForAppLaunch">true</bool>
    <integer name="disablepacking_timeout_param">5000</integer>
    <integer name="launchboost_timeout_param">2000</integer>
-   <integer name="launchboost_cpuboost_param">0x20B</integer>
+   <integer name="launchboost_cpuboost_param">0x20C</integer>
    <integer name="launchboost_pcdisbl_param">0x101</integer>
    <integer name="launchboost_ksmboost_param">0x1C00</integer>
    <integer name="launchboost_smtaskboost_param">0x4001</integer>
