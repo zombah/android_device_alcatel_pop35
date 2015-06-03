@@ -35,6 +35,8 @@ debug.sf.hwc.canUseABC=1
 # disable vsync for cpu render apps
 debug.cpurend.vsync=false
 
+#enable gpu perf hint
+sys.hwc.gpu_perf_mode=1
 #ro.hdmi.enable=true
 #tunnel.decode=true
 #tunnel.audiovideo.decode=true
