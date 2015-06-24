@@ -93,6 +93,9 @@ on boot
 
     setprop wifi.interface wlan0
 
+    mkdir /persist/drm 0770 system system
+    mkdir /persist/misc 0770 system system
+
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
