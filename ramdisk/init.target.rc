@@ -44,8 +44,7 @@ on early-init
 on fs
     # add by ting.cao for bootprof file
     write /proc/bootprof "INIT:Mount_START"
-    wait /dev/block/platform/soc.0/7824900.sdhci/mmcblk0
-    symlink /dev/block/platform/soc.0/7824900.sdhci /dev/block/bootdevice
+    wait /dev/block/bootdevice
     mount_all fstab.qcom
     swapon_all fstab.qcom
     write /proc/bootprof "INIT:Mount_END"
