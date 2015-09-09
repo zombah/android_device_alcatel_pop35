@@ -87,6 +87,9 @@ persist.tuning.qdcm=1
 ro.qcom.screencolor=1
 ro.qualcomm.cabl=2
 
+# Scheduler
+sys.io.scheduler=bfq
+
 # Storage
 ro.crypto.fuse_sdcard=true
 ro.sys.umsdirtyratio=20
