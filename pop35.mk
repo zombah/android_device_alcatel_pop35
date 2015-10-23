@@ -59,7 +59,8 @@ PRODUCT_PACKAGES += \
 
 # Compatibility
 PRODUCT_PACKAGES += \
-    libboringssl-compat
+    libboringssl-compat \
+    libril_shim
 
 # Display
 PRODUCT_PACKAGES += \
