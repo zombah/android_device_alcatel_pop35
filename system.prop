@@ -212,3 +212,4 @@ ro.sys.fw.bservice_limit=5
 ro.sys.fw.bservice_age=5000
 
 ro.crypto.fuse_sdcard=true
+persist.data.qmi.adb_logmask=0
