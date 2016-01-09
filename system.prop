@@ -218,17 +218,4 @@ ro.sys.fw.bservice_enable=true
 ro.sys.fw.bservice_limit=5
 ro.sys.fw.bservice_age=5000
 
-#PR1069267 the SIM1/SIM2 IMEI swap after flash new version
-persist.radio.msim.stackid_0=0
-persist.radio.msim.stackid_1=1
-persist.radio.disable_flexmap=1
-
-#increate forground process thread priority to improve launch performance
-#
-persist.sys.prioproc=true
-#modify ro.sf.lcd_density to 213
-ro.sf.lcd_density=213
-#PR 1071482,1071975 jingang.yi@tcl.com begin
-#fixed this issue when playing DRM media and press volume key video will change to black
-persist.gralloc.cp.level3=1
-#PR 1071483 jingang.yi@tcl.com end
+ro.crypto.fuse_sdcard=true
