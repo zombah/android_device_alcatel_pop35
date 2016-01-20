@@ -44,9 +44,10 @@ on fs
     # add by ting.cao for bootprof file
     write /proc/bootprof "INIT:Mount_START"
     mount_all fstab.qcom
+    swapon_all fstab.qcom
     write /proc/bootprof "INIT:Mount_END"
 #changed by liuph at 2014-12-17 for resize /data FR877329 end
-
+    
     restorecon_recursive /persist
     restorecon_recursive /tctpersist
 
@@ -99,11 +100,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
-
-#enable zram
-on property:ro.config.zram=true
-    swapon_all fstab.qcom
-    write /proc/sys/vm/swappiness 100
 
 on init
    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
@@ -256,6 +252,7 @@ on property:sys.boot_from_charger_mode=1
 
 on boot
     start rmt_storage
+    write /proc/sys/vm/swappiness 100
 
     chown system system /sys/class/leds/led_G/brightness
     chown system system /sys/class/leds/led_G/blink
