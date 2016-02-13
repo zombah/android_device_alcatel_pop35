@@ -122,9 +122,6 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/alcatel/pop35/sepolicy
 
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun1/file
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HOSTAPD_DRIVER := NL80211

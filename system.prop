@@ -88,9 +88,6 @@ ro.qualcomm.cabl=2
 # Scheduler
 sys.io.scheduler=bfq
 
-# Storage
-ro.sys.umsdirtyratio=20
-
 # Telephony
 DEVICE_PROVISIONED=1
 persist.data.dont_use_epc=true
