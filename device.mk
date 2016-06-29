@@ -17,6 +17,6 @@
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-PRODUCT_COPY_FILES += \
-    device/alcatel/pop35/prebuilt/kernel/kernel:kernel
+#PRODUCT_COPY_FILES += \
+#    device/alcatel/pop35/prebuilt/kernel/kernel:kernel
 
