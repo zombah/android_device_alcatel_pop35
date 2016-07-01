@@ -160,6 +160,7 @@
 /dev/tty_sdio_00          0660   system     system
 /dev/ttyGS0               0660   system     system
 /dev/i2c-5                0660   media       media
+/dev/i2c-3                0660   system     audio
 /dev/voice_svc            0660   system     audio
 
 # DVB devices
@@ -236,3 +237,4 @@
 
 # Add device block for FRP
 /dev/block/bootdevice/by-name/config    0660   system     system
+/dev/block/bootdevice/by-name/persistent    0660   system     system

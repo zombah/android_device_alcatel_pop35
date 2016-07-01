@@ -24,7 +24,7 @@
     <ctl name="HPHR Volume" value="9" />
     <ctl name="RX1 Digital Volume" value="84" />
     <ctl name="RX2 Digital Volume" value="84" />
-    <ctl name="RX3 Digital Volume" value="84" />
+    <ctl name="RX3 Digital Volume" value="90" />
     <ctl name="IIR1 INP1 Volume" value="84" />
     <ctl name="IIR1 INP2 Volume" value="84" />
     <ctl name="IIR1 INP3 Volume" value="84" />
@@ -52,9 +52,17 @@
     <ctl name="HPHL" value="ZERO" />
     <ctl name="HPHR" value="ZERO" />
     <ctl name="SPK DAC Switch" value="0" />
+    <ctl name="Speaker Boost" value="DISABLE" />
     <ctl name="EAR PA Gain" value="POS_1P5_DB" />
     <ctl name="MI2S_RX Channels" value="One" />
     <ctl name="MI2S_TX Channels" value="One" />
+    
+    <!-- external speaker class D PA switch -->
+    <!-- Added by li-peng@tcl.com for speaker & headphone path switch issue -->
+    <ctl name="Ext Spk Switch" value="Off" />
+
+    <!-- Added by li-peng@tcl.com, 2015/03/30, 19:52, for audio jack switch control -->
+    <ctl name="Audio Jack Switch" value="On" />
 
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
@@ -525,8 +533,19 @@
     </path>
 
     <path name="speaker">
-        <ctl name="RX3 MIX1 INP1" value="RX1" />
-        <ctl name="SPK DAC Switch" value="1" />
+        <!-- Added by li-peng@tcl.com, 2015/03/30, 19:52, for audio jack switch control -->
+        <ctl name="Audio Jack Switch" value="Off" />
+
+        <ctl name="MI2S_RX Channels" value="One" />
+        <ctl name="RX2 MIX1 INP1" value="RX1" />
+        <ctl name="RDAC2 MUX" value="RX2" />
+        <!--Added by li-peng@tcl.com 2015/07/22, 15:51, for HW requirements.-->
+        <ctl name="EAR PA Gain" value="POS_6_DB" />
+
+        <ctl name="HPHR" value="Switch" />
+        <!-- external speaker class D PA switch -->
+        <!-- Added by li-peng@tcl.com for speaker & headphone path switch issue -->
+        <ctl name="Ext Spk Switch" value="On" />
     </path>
 
     <path name="speaker-mic">
@@ -551,8 +570,13 @@
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="RDAC2 MUX" value="RX2" />
+        <!--Added by li-peng@tcl.com 2015/07/22, 15:51, for HW requirements.-->
+        <ctl name="EAR PA Gain" value="POS_6_DB" />
+
         <ctl name="HPHL" value="Switch" />
         <ctl name="HPHR" value="Switch" />
+        <!-- Added by li-peng@tcl.com, 2015/03/30, 19:52, for audio jack switch control -->
+        <ctl name="Audio Jack Switch" value="On" />
     </path>
 
     <path name="headset-mic">
@@ -618,7 +642,9 @@
 
     <path name="speaker-and-headphones">
         <path name="headphones" />
-        <path name="speaker" />
+        <!-- Modified by li-peng@tcl.com for speaker & headphone combination path issue. -->
+        <!-- A ctl must not appear twice in a path. -->
+        <ctl name="Ext Spk Switch" value="On" />
     </path>
 
     <path name="usb-headphones">
@@ -763,6 +789,13 @@
 
     <path name="ADSP testfwk">
         <ctl name="MI2S_DL_HL Switch" value="1" />
+    </path>
+
+    <!-- Added by li-peng@tcl.com, 2015/03/30, 13:56, for HAC device. -->
+    <path name="Voice-Earpiece-HAC">
+        <ctl name="RX3 MIX1 INP1" value="RX1" />
+        <ctl name="SPK DAC Switch" value="1" />
+        <ctl name="Speaker Boost" value="DISABLE" />
     </path>
 
 </mixer>

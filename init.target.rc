@@ -34,8 +34,24 @@ on early-init
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
 
+#[FEATURE]-ADD by TCTNB.XLJ, 2014/04/23, FR-642133, mount tctpersist partition
+#    mkdir /tctpersist 0500 system system
+    mkdir /tctpersist 0771 system system
+# import cne init file
+on post-fs
+    export LD_PRELOAD /vendor/lib/libNimsWrap.so
+
 on fs
+#changed by liuph at 2014-12-17 for resize /data FR877329 start
+#move mounting /dev/block/bootdevice/by-name/userdata outside fstab.qcom. We will mount it after resizing at fstab_step2.tct
+    # add by ting.cao for bootprof file
+    write /proc/bootprof "INIT:Mount_START"
     mount_all fstab.qcom
+    #wait /dev/block/bootdevice/by-name/userdata
+    #exec /system/bin/ext4_resize
+    #mount_all fstab_step2.tct
+    write /proc/bootprof "INIT:Mount_END"
+#changed by liuph at 2014-12-17 for resize /data FR877329 end
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -49,9 +65,37 @@ on fs
     mkdir /persist/data 0700 system system
     restorecon_recursive /persist
 
+#[FEATURE]-ADD-BEGIN by TCTNB.XLJ, 2014/04/23, FR-642133, mount tctpersist partition
+    wait /dev/block/bootdevice/by-name/tctpersist
+    mount ext4 /dev/block/bootdevice/by-name/tctpersist /tctpersist nosuid nodev barrier=1
+    restorecon_recursive /tctpersist
+
+    wait /dev/block/bootdevice/by-name/hdcp
+    mount ext4 /dev/block/bootdevice/by-name/hdcp /persist/data nosuid nodev barrier=1
+#[FEATURE]-ADD-END by TCTNB.XLJ
+
     wait /dev/block/bootdevice/by-name/modem
     mount vfat /dev/block/bootdevice/by-name/modem /firmware ro context=u:object_r:firmware_file:s0,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
     #write /sys/kernel/boot_adsp/boot 1
+
+    # We chown/chmod /tctpersist again so because mount is run as root + defaults
+    chown system system /tctpersist
+    chmod 0775 /tctpersist
+    mkdir /tctpersist/powerup_reason 0775 root system
+    chmod 0775 /tctpersist/powerup_reason
+#modify begin by stephen.wu for powerup_reason daemon recording power off charging PR:1066454
+	start time_daemon
+	start powerup_reason
+#modify end by stephen.wu
+
+#add by stephen.wu, add /tctpersist/phone dir for record wifi call, name id
+	mkdir /tctpersist/phone 0777 system system
+#add end by stephen.wu
+
+#add code for jrdrecord by xtfu for PR1021282
+    mkdir /tctpersist/jrdrecord 0775 root system
+    chmod 0775 /tctpersist/jrdrecord
+
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -62,6 +106,22 @@ on post-fs-data
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
     mkdir /data/misc/dts 0770 media audio
+
+#PR990248 JrdLogger begin
+service proinfo /sbin/proinfo
+        class main
+        user root
+        group root
+        disabled
+        oneshot
+	seclabel u:r:proinfo:s0
+
+on property:debug.jrdlog=1
+        start proinfo
+
+on property:debug.jrdlog=0
+        stop proinfo
+#PR990248 JrdLogger end
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
@@ -84,20 +144,20 @@ on property:persist.usb.chgdisabled=1
 on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
-service qrngd /system/bin/qrngd -f
-   class main
-   user root
-   group root
+#service qrngd /system/bin/qrngd -f
+#   class main
+#   user root
+#   group root
 
-service qrngp /system/bin/qrngp -f
-   class main
-   user root
-   group root
-   oneshot
-   disabled
+#service qrngp /system/bin/qrngp -f
+#   class main
+#   user root
+#   group root
+#   oneshot
+#   disabled
 
-on property:sys.boot_completed=1
-   start qrngp
+#on property:sys.boot_completed=1
+#   start qrngp
 
 service qseecomd /system/bin/qseecomd
    class core
@@ -118,7 +178,9 @@ service thermal-engine /system/bin/thermal-engine
    group root
 
 service time_daemon /system/bin/time_daemon
-   class late_start
+#modify begin by stephen.wu for powerup_reason daemon recording power off charging PR:1066454
+#	class late_start
+#modify end by stephen.wu
    user root
    group root
 
@@ -127,20 +189,139 @@ service audiod /system/bin/audiod
    user system
    group system
 
+#JRD SYS START to start powerup_reason after time_daemon start
+service powerup_reason /system/bin/powerup_reason
+#modify begin by stephen.wu for powerup_reason daemon recording power off charging PR:1066454
+#	class late_start
+#modify end by stephen.wu
+    seclabel u:r:powerup_reason:s0
+    oneshot
+#JRD SYS END
+
+on property:ro.build.type=eng
+#[BUGFIX]-Add-BEGIN by TCTNB.Chen Ji,11/18/2013,553538,
+#Start wifi test mode certification services
+#Change files permission to write .etc
+    chmod 0777 /data/wl/rx.sh
+    chmod 0777 /data/wl/wavegenerator.sh
+    chmod 0777 /data/wl/rxn.sh
+    chmod 0777 /data/wl/rxstop.sh
+    chmod 0777 /data/wl/txstop.sh
+    chmod 0777 /data/wl/txbg.sh
+    chmod 0777 /data/wl/txn.sh
+    chmod 0777 /data/wl/RxOn.sh
+    chmod 0777 /data/wl/stop.sh
+    chmod 0777 /data/wl/RxReconnect.sh
+    chmod 0777 /data/wl/txunmod.sh
+    chmod 0777 /data/wl/wlarm
+    chmod 0777 /data/wl
+
+on property:ro.build.type=userdebug
+    chmod 0777 /data/wl/rx.sh
+    chmod 0777 /data/wl/rxn.sh
+    chmod 0777 /data/wl/wavegenerator.sh
+    chmod 0777 /data/wl/rxstop.sh
+    chmod 0777 /data/wl/txstop.sh
+    chmod 0777 /data/wl/txbg.sh
+    chmod 0777 /data/wl/txn.sh
+    chmod 0777 /data/wl/RxOn.sh
+    chmod 0777 /data/wl/stop.sh
+    chmod 0777 /data/wl/RxReconnect.sh
+    chmod 0777 /data/wl/txunmod.sh
+    chmod 0777 /data/wl/wlarm
+    chmod 0777 /data/wl
+
+service wifitest /system/bin/sh /system/etc/init.qcom.wifitest.sh
+    disabled
+    oneshot
+
+service wifitesttx /system/bin/sh /system/etc/init.qcom.wifitesttx.sh
+    disabled
+    oneshot
+
+service wifitestwg /system/bin/sh /system/etc/init.qcom.wifitestwg.sh
+    disabled
+    oneshot
+
+service wifitesttxn /system/bin/sh /system/etc/init.qcom.wifitesttxn.sh
+    disabled
+    oneshot
+
+service wifitestRxOn /system/bin/sh /system/etc/init.qcom.wifitestRxOn.sh
+    disabled
+    oneshot
+
+service RxReconnect /system/bin/sh /system/etc/init.qcom.RxRconnect.sh
+    disabled
+    oneshot
+
+service wifiUnmodTst /system/bin/sh /system/etc/init.qcom.wifitesttxunmod.sh
+    disabled
+    oneshot
+
+service RxStop /system/bin/sh /system/etc/init.qcom.wifitestRxStop.sh
+    disabled
+    oneshot
+
+service txbg_fixed /system/bin/sh /system/etc/init.qcom.wifitesttxbg_fixed.sh
+    disabled
+    oneshot
+
+service TxStop /system/bin/sh /system/etc/init.qcom.wifitestTxStop.sh
+    disabled
+    oneshot
+#[BUGFIX]-Add-END by TCTNB.Chen Ji
+
 on charger
-   wait /dev/block/bootdevice/by-name/system
-   mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+   #wait /dev/block/bootdevice/by-name/system
+   #mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
    chown root system /sys/class/power_supply/bms/current_now
    chown root system /sys/class/power_supply/bms/voltage_ocv
    chmod 0664 /sys/class/power_supply/bms/current_now
    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
    start vm_bms
-   load_all_props
+   #load_all_props
    start qcom-post-boot
+   trigger charger_usb_config
+   class_start charger
+
+#charger mode usb config use all functions
+on charger_usb_config
+   setprop sys.usb.config default,mass_storage,serial_smd,serial_tty,diag,adb
+
+# charger can trigger a full boot from charger mode by signaling this
+# property when the power button is held.
+on property:sys.boot_from_charger_mode=1
+    class_stop charger
+
+    trigger firmware_mounts_complete
+    trigger early-boot
+    trigger boot
 
 on boot
     start rmt_storage
     insmod /system/lib/modules/adsprpc.ko
+
+    chown system system /sys/class/leds/led_G/brightness
+    chown system system /sys/class/leds/led_G/blink
+    chmod 0664 /sys/class/leds/led_G/blink
+
+#[BUGFIX]-Add-BEGIN by TCT-SH-linjun 2015-3-19 PR:898944
+    mkdir /tctpersist/crash_report 0775 root system
+    mkdir /tctpersist/app_log 0775 root system
+    mkdir /tctpersist/app_log/crash 0775 root system
+#[BUGFIX]-Add-END
+
+# add by cuirui for torch ,PR: 946725
+    chown root system /sys/class/leds/led-torch/brightness
+    chmod 0666 /sys/class/leds/led-torch/brightness
+
+# add by kui.sun for hang_detect PR:   1054834
+    chown system system /dev/RT_Monitor
+
+
+    insmod /system/lib/modules/exfat_core.ko
+    insmod /system/lib/modules/exfat_fs.ko
 
 service wcnss-service /system/bin/wcnss_service
     class main
@@ -165,6 +346,16 @@ on property:init.svc.surfaceflinger=stopped
 
 on property:init.svc.surfaceflinger=running
     start ppd
+
+#[BUGFIX]-Add-BEGIN by TCTNB.93391,07/02/2015,1035882,USB Driver Auto Install
+on post-fs
+    write /sys/class/android_usb/android0/f_mass_storage/rom/file /system/etc/USBDriver.iso
+#[BUGFIX]-Add-END by TCTNB.93391,07/02/2015,1035882,USB Driver Auto Install
+
+#[FEATURE]-ADD-BEGIN by TCTNB.93391, 2015/07/08,970064,change simlock remain times to tctpersist
+on post-fs
+    mkdir /tctpersist/simlock 0771 system radio
+# [FEATURE]-ADD-END by TCTNB.93391, 2015/07/08,970064,change simlock remain times to tctpersist
 
 service imsstarter /system/bin/sh /system/etc/init.qti.ims.sh
     class main
@@ -226,3 +417,20 @@ on property:persist.sys.synaptics_dsx.qhd=true
 
 on property:persist.sys.synaptics_dsx.qhd=false
    stop touch
+
+service gfad /system/xbin/gfad
+    class main
+    seclabel u:r:gfad:s0
+    oneshot
+
+on property:ro.tombstone.enable=true
+    write /proc/sys/fs/suid_dumpable 1
+
+service nvdiag_daemon /system/bin/nvdiag_daemon
+    class late_start
+    user root
+    group root
+
+service restore_sfs /system/bin/restore_sfs
+    class late_start
+    oneshot
