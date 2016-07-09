@@ -35,45 +35,20 @@ on early-init
 #[FEATURE]-ADD by TCTNB.XLJ, 2014/04/23, FR-642133, mount tctpersist partition
 #    mkdir /tctpersist 0500 system system
     mkdir /tctpersist 0771 system system
+    mkdir /persist/data 0700 system system
 # import cne init file
 on post-fs
     export LD_PRELOAD /vendor/lib/libNimsWrap.so
 
 on fs
-#changed by liuph at 2014-12-17 for resize /data FR877329 start
-#move mounting /dev/block/bootdevice/by-name/userdata outside fstab.qcom. We will mount it after resizing at fstab_step2.tct
     # add by ting.cao for bootprof file
     write /proc/bootprof "INIT:Mount_START"
     mount_all fstab.qcom
-    #wait /dev/block/bootdevice/by-name/userdata
-    #exec /system/bin/ext4_resize
-    #mount_all fstab_step2.tct
     write /proc/bootprof "INIT:Mount_END"
 #changed by liuph at 2014-12-17 for resize /data FR877329 end
 
-    # Keeping following partitions outside fstab file. As user may not have
-    # these partition flashed on the device. Failure to mount any partition in fstab file
-    # results in failure to launch late-start class.
-
-    wait /dev/block/bootdevice/by-name/cache
-    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
-
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
-    mkdir /persist/data 0700 system system
     restorecon_recursive /persist
-
-#[FEATURE]-ADD-BEGIN by TCTNB.XLJ, 2014/04/23, FR-642133, mount tctpersist partition
-    wait /dev/block/bootdevice/by-name/tctpersist
-    mount ext4 /dev/block/bootdevice/by-name/tctpersist /tctpersist nosuid nodev barrier=1
     restorecon_recursive /tctpersist
-
-    wait /dev/block/bootdevice/by-name/hdcp
-    mount ext4 /dev/block/bootdevice/by-name/hdcp /persist/data nosuid nodev barrier=1
-#[FEATURE]-ADD-END by TCTNB.XLJ
-
-    wait /dev/block/bootdevice/by-name/modem
-    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro context=u:object_r:firmware_file:s0,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 
     # We chown/chmod /tctpersist again so because mount is run as root + defaults
     chown system system /tctpersist
@@ -92,7 +67,6 @@ on fs
 #add code for jrdrecord by xtfu for PR1021282
     mkdir /tctpersist/jrdrecord 0775 root system
     chmod 0775 /tctpersist/jrdrecord
-
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
