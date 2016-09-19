@@ -45,6 +45,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --board R2A73030BR00
 TARGET_KERNEL_CONFIG := cyanogenmod-pop35_defconfig
 TARGET_KERNEL_SOURCE := kernel/alcatel/msm8909
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-
 LZMA_RAMDISK_TARGETS := recovery
 
 # ANT+
