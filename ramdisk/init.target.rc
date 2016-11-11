@@ -275,6 +275,9 @@ on boot
     insmod /system/lib/modules/exfat_core.ko
     insmod /system/lib/modules/exfat_fs.ko
 
+    # vibrator intensity
+    chown system system /sys/class/timed_output/vibrator/vtg_level
+
 service wcnss-service /system/bin/wcnss_service
     class main
     user system
