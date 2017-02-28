@@ -30,6 +30,8 @@ qcom.bluetooth.soc=smd
 # Camera
 persist.camera.tintless=enable
 persist.camera.longshot.stages=1
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
 
 # Display
 debug.composition.type=dyn
