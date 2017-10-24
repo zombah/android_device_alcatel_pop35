@@ -61,24 +61,32 @@ lib/libmm-qcamera.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libqomx_core.so
-vendor/lib/libactuator_dw9714_f140858r_camcorder.so
-vendor/lib/libactuator_dw9714_f140858r_camera.so
-vendor/lib/libactuator_dw9714_f140858r.so
-vendor/lib/libchromatix_gc2355_qunhui_ffln_78_common.so
-vendor/lib/libchromatix_gc2355_qunhui_ffln_78_default_video.so
-vendor/lib/libchromatix_gc2355_qunhui_ffln_78_preview.so
-vendor/lib/libchromatix_gc2355_qunhui_ffln_78_snapshot.so
-vendor/lib/libchromatix_hi544_gz_bahn_40_common.so
-vendor/lib/libchromatix_hi544_gz_bahn_40_default_video.so
-vendor/lib/libchromatix_hi544_gz_bahn_40_preview.so
-vendor/lib/libchromatix_hi544_gz_bahn_40_snapshot.so
+vendor/lib/libactuator_dw9714_camcorder.so
+vendor/lib/libactuator_dw9714_camera.so
+vendor/lib/libactuator_dw9714_ov5670_csp_camcorder.so
+vendor/lib/libactuator_dw9714_ov5670_csp_camera.so
+vendor/lib/libactuator_dw9714_ov5670_csp.so
+vendor/lib/libchromatix_gc2355_8909_common.so
+vendor/lib/libchromatix_gc2355_8909_default_video.so
+vendor/lib/libchromatix_gc2355_8909_liveshot.so
+vendor/lib/libchromatix_gc2355_8909_preview.so
+vendor/lib/libchromatix_ov5670_qc700_common.so
+vendor/lib/libchromatix_ov5670_qc700_default_video.so
+vendor/lib/libchromatix_ov5670_qc700_hfr_120fps.so
+vendor/lib/libchromatix_ov5670_qc700_hfr_60fps.so
+vendor/lib/libchromatix_ov5670_qc700_hfr_90fps.so
+vendor/lib/libchromatix_ov5670_qc700_liveshot.so
+vendor/lib/libchromatix_ov5670_qc700_preview.so
+vendor/lib/libchromatix_ov5670_qc700_snapshot.so
+vendor/lib/libchromatix_ov5670_qc700_video_hd.so
+vendor/lib/libchromatix_ov5670_qc700_zsl.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera_faceproc.so
-vendor/lib/libmmcamera_gc2355_qunhui_ffln_78.so
+vendor/lib/libmmcamera_gc2355_8909.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hdr_lib.so
-vendor/lib/libmmcamera_hi544_gz_bahn_40.so
+vendor/lib/libmmcamera_ov5670_qc700.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
@@ -122,8 +130,6 @@ bin/gpsone_daemon
 bin/location-mq
 bin/loc_launcher
 bin/lowi-server
-bin/xtwifi-client
-bin/xtwifi-inet-agent
 etc/permissions/com.qualcomm.location.xml
 etc/cacert_location.pem
 etc/flp.conf
@@ -227,8 +233,9 @@ vendor/lib/libxml.so
 # Sensors
 lib/hw/sensors.msm8909.so
 vendor/etc/calmodule.cfg
-vendor/lib/libcalmodule_common.so
+vendor/lib/libcalmodule_akm.so
 vendor/lib/libcalmodule_gyroscope.so
+vendor/lib/libcalmodule_senodia.so
 
 # Thermal
 bin/thermal-engine
