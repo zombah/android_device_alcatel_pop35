@@ -120,7 +120,7 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-    device/huawei/y560/sepolicy
+    device/alcatel/pop35/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     file.te \
