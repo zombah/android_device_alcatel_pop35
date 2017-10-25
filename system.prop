@@ -1,215 +1,125 @@
-#
-# system.prop for msm8909
-#
 
-#rild.libpath=/system/lib/libreference-ril.so
-rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
-rild.libargs=-d /dev/smd0
-persist.radio.rat_on=combine
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
-ril.subscription.types=NV,RUIM
-DEVICE_PROVISIONED=1
-# Start in cdma mode
-# ro.telephony.default_network=5
-ro.telephony.default_network=9
-#configure phone type setting for PIXI
+# Audio
+audio.dolby.ds2.enabled=true
+audio.offload.buffer.size.kb=64
+audio.offload.gapless.enabled=true
+audio.offload.min.duration.secs=30
+av.offload.enable=true
+persist.audio.fluence.speaker=false
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+rec.playback.conc.disabled=true
+ro.qc.sdk.audio.fluencetype=fluence
+ro.qc.sdk.audio.ssr=false
+sys.audio.init=false
+tunnel.audio.encode=false
+use.voice.path.for.pcm.voip=true
+voice.playback.conc.disabled=true
+voice.record.conc.disabled=false
+voice.voip.conc.disabled=true
 
-#PR1063568
-persist.radio.apm_mdm_not_pwdn=1
+# Battery
+ro.cutoff_voltage_mv=3200
 
-debug.sf.hw=1
-debug.egl.hw=1
+# Camera
+persist.camera.tintless=enable
+persist.camera.longshot.stages=1
+
+# Display
 debug.composition.type=dyn
+debug.cpurend.vsync=false
+debug.egl.hw=1
 debug.hwc.dynThreshold=2.5
 debug.mdpcomp.logs=0
-dalvik.vm.heapsize=36m
-dev.pm.dyn_samplingrate=1
-persist.demo.hdmirotationlock=false
-
-#enable dirty rect
-debug.sf.swaprect=1
-#enable app buffer composition
+debug.sf.hw=1
 debug.sf.hwc.canUseABC=1
-# disable vsync for cpu render apps
-debug.cpurend.vsync=false
+debug.sf.swaprect=1
+dev.pm.dyn_samplingrate=1
+persist.hwc.enable_vds=1
+ro.opengles.version=196608
+ro.sf.lcd_density=213
 
-#enable gpu perf hint
-sys.hwc.gpu_perf_mode=1
-#ro.hdmi.enable=true
-#tunnel.decode=true
-#tunnel.audiovideo.decode=true
-#lpa.decode=false
-#lpa.use-stagefright=true
-#persist.speaker.prot.enable=false
+# DRM
+drm.service.enabled=true
 
-#
-# system props for the cne module
-#
-persist.cne.feature=0
+# FRP
+ro.frp.pst=/dev/block/bootdevice/by-name/config
 
-#
-# system props for the dpm module
-#
-persist.dpm.feature=0
+# GPS
+persist.gps.qc_nlp_in_use=1
+persist.loc.nlp_name=com.qualcomm.location
+ro.gps.agps_provider=1
 
-#system props for the MM modules
+# Media
+media.aac_51_output_enabled=true
 media.stagefright.enable-player=true
 media.stagefright.enable-http=true
 media.stagefright.enable-aac=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
-mmp.enable.3g2=true
-media.aac_51_output_enabled=true
-#pr1062205-liqing.yuan-start
-#codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS 3G2 MP2PS MP2TS MP3 OGG QCP FLAC
-mm.enable.qcom_parser=196351
-#pr1062205-liqing.yuan-end
-# Default to AwesomePlayer
 media.stagefright.use-awesome=true
-
-#
-# system props for the data modules
-#
-ro.use_data_netmgrd=true
-persist.data.netmgrd.qos.enable=true
-persist.data.mode=concurrent
-
-#system props for time-services
-persist.timed.enable=true
-
-#
-# system prop for opengles version
-#
-# 196608 is decimal for 0x30000 to report version 3
-ro.opengles.version=196608
-
-# System property for cabl
-ro.qualcomm.cabl=2
-
-# System property for QDCM
-persist.tuning.qdcm=1
-
-# System property for Screen Color
-ro.qcom.screencolor=1
-
-#
-# System props for telephony
-# System prop to turn on CdmaLTEPhone always
-telephony.lteOnCdmaDevice=1
-
-#Simulate sdcard on /data/media
-#
-persist.fuse_sdcard=true
-
-#
-# System property for Camera
-# System prop to allocate Reprocess buffer as "1"
-# during Longshot usecase
-persist.camera.longshot.stages=1
-
-#
-#pixi3-5 and pixi3-5.5 camera tintless enable
-#
-persist.camera.tintless=enable
-
-#
-# dirty ratio value when enable ums
-#
-ro.sys.umsdirtyratio=20
-
-#
-#snapdragon value add features
-#
-ro.qc.sdk.audio.ssr=false
-##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=fluence
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-#898890-zhaopeng-modify persist.audio.fluence.speaker=true
-persist.audio.fluence.speaker=false
-#Set for msm8909
-tunnel.audio.encode = false
-ro.config.low_ram=false
-#Buffer size in kbytes for compress offload playback
-audio.offload.buffer.size.kb=64
-#Minimum duration for offload playback in secs
-audio.offload.min.duration.secs=30
-#Enable offload audio video playback by default
-av.offload.enable=true
-#enable voice path for PCM VoIP by default
-use.voice.path.for.pcm.voip=true
-#
-#System property for FM transmitter
-#
-ro.fm.transmitter=false
-#enable dsp gapless mode by default
-audio.offload.gapless.enabled=true
-
-#Audio voice concurrency related flags
-voice.playback.conc.disabled=true
-#add by tao.yang for PR1032624 begin
-voice.record.conc.disabled=false
-#add by tao.yang for PR1032624 end
-voice.voip.conc.disabled=true
-
-#Audio VoIP / playback record concurrency flags
-rec.playback.conc.disabled=true
-
-#Set composition for USB
-#persist.sys.usb.config=mtp,diag,adb
-#Set read only default composition for USB
-#ro.sys.usb.default.config=diag,serial_smd,rmnet_qti_bam,adb
-
-# set max background services
-ro.config.max_starting_bg=8
-
-#property to enable user to access Google WFD settings
-persist.debug.wfd.enable=1
-#propery to enable VDS WFD solution
-persist.hwc.enable_vds=1
-
-#property to enable image unload by audio HAL
-sys.audio.init=false
-
-#property to enable DS2 dap
-audio.dolby.ds2.enabled=true
-
-#HWUI properties
-ro.hwui.text_large_cache_height=2048
-
-# ##enable sta proxy bydefault
+mm.enable.qcom_parser=196351
+mmp.enable.3g2=true
 persist.mm.sta.enable=0
-#Trim properties
-ro.sys.fw.use_trim_settings=true
+
+# Memory
+ro.config.max_starting_bg=8
+ro.sys.fw.bservice_enable=true
+ro.sys.fw.bservice_limit=5
+ro.sys.fw.bservice_age=5000
 ro.sys.fw.empty_app_percent=50
 ro.sys.fw.trim_empty_percent=100
 ro.sys.fw.trim_cache_percent=100
 ro.sys.fw.trim_enable_memory=1073741824
+ro.sys.fw.use_trim_settings=true
 
-#Enable b-service Propogation
-ro.sys.fw.bservice_enable=true
-
-
-# set cutoff voltage to 3200mV
-ro.cutoff_voltage_mv=3200
-
-#min/max cpu in core control
+# Perf
 ro.core_ctl_min_cpu=2
 ro.core_ctl_max_cpu=4
+ro.vendor.extension_library=libqti-perfd-client.so
 
-#Enable B service adj transition by default
-ro.sys.fw.bservice_enable=true
-ro.sys.fw.bservice_limit=5
-ro.sys.fw.bservice_age=5000
+# Qualcomm
+persist.tuning.qdcm=1
+ro.qcom.screencolor=1
+ro.qualcomm.cabl=2
 
+# Storage
 ro.crypto.fuse_sdcard=true
+ro.sys.umsdirtyratio=20
+persist.fuse_sdcard=true
+
+# Telephony
+DEVICE_PROVISIONED=1
+persist.data.dont_use_epc=true
+persist.data.mode=concurrent
+persist.data.netmgrd.qos.enable=true
 persist.data.qmi.adb_logmask=0
+persist.radio.apm_mdm_not_pwdn=1
+persist.radio.rat_on=combine
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_plmn=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+ril.subscription.types=NV,RUIM
+rild.libargs=-d /dev/smd0
+rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+ro.telephony.default_network=9
+ro.use_data_netmgrd=true
+telephony.lteOnCdmaDevice=1
+
+# Time services
+persist.timed.enable=true
+
+# USB
+persist.sys.usb.config=diag,serial_smd,serial_tty,mass_storage
+ro.sys.usb.default.config=diag,serial_smd,serial_tty,mass_storage
+
+# Wifi
+persist.debug.wfd.enable=1
+wifi.interface=wlan0
