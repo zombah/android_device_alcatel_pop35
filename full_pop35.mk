@@ -21,7 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/alcatel/pop35/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := Pop35
+PRODUCT_DEVICE := pop35
 PRODUCT_NAME := full_pop35
 PRODUCT_BRAND := Alcatel
 PRODUCT_MODEL := 5065D
