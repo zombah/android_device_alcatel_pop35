@@ -15,9 +15,5 @@
 #
 
 ifneq ($(filter pop35,$(TARGET_DEVICE)),)
-
-LOCAL_PATH := $(call my-dir)
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
+    include $(all-subdir-makefiles)
 endif
