@@ -1,0 +1,3 @@
+#!/system/bin/sh
+logcat -f /cache/logcat.log -v threadtime
+cat /proc/kmsg > /cache/kmsg.log
