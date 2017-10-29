@@ -8,5 +8,5 @@
 /efs1            emmc              /dev/block/bootdevice/by-name/modemst1   flags=backup=1;display=EFS
 /efs2            emmc              /dev/block/bootdevice/by-name/modemst2   flags=backup=1;subpartitionof=/efs1
 
-/external_sd     vfat              /dev/block/mmcblk1p1  /dev/block/mmcblk1 flags=display=Micro SDcard;storage;wipeingui;removable;andsec
-/usb-otg         vfat              /dev/block/sda1      /dev/block/sda      flags=removable;storage;display=USB-OTG
+/external_sd     vfat              /dev/block/mmcblk1p1  /dev/block/mmcblk1 flags=display="Micro SDcard";storage;wipeingui;removable
+/usb-otg         vfat              /dev/block/sda1      /dev/block/sda      flags=display="USB-OTG"storage;wipeingui;removable
