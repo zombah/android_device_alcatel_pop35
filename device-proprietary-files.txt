@@ -183,6 +183,7 @@ vendor/lib/libmm-qdcm.so
 
 # Qualcomm framework
 bin/irsc_util
+bin/pm-service
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 vendor/lib/libdiag.so
