@@ -181,6 +181,9 @@ vendor/lib/libmm-abl-oem.so
 vendor/lib/libmm-als.so
 vendor/lib/libmm-qdcm.so
 
+# Powerup reason
+bin/powerup_reason
+
 # Qualcomm framework
 bin/irsc_util
 bin/pm-service
@@ -234,6 +237,9 @@ vendor/etc/calmodule.cfg
 vendor/lib/libcalmodule_akm.so
 vendor/lib/libcalmodule_gyroscope.so
 vendor/lib/libcalmodule_senodia.so
+
+# TCT daemon
+bin/tctd
 
 # Thermal
 bin/thermal-engine
