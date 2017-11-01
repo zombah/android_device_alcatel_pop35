@@ -148,6 +148,7 @@ service audiod /system/bin/audiod
 service tctd /system/bin/tctd
    class core
    socket tctd stream 0666 root root
+   seclabel u:r:tctd:s0
 
 #JRD SYS START to start powerup_reason after time_daemon start
 service powerup_reason /system/bin/powerup_reason
