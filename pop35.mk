@@ -42,6 +42,10 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     tinymix
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8909
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
