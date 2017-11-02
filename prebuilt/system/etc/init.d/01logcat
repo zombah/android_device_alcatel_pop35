@@ -1,4 +1,5 @@
 #!/system/bin/sh
 start logd
+sleep 10
 logcat -f /cache/logcat.log -v threadtime
 cat /proc/kmsg > /cache/kmsg.log
