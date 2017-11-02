@@ -23,6 +23,9 @@ $(call inherit-product-if-exists, vendor/alcatel/pop35/pop35-vendor.mk)
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
