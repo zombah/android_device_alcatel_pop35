@@ -16,6 +16,8 @@
 
 LOCAL_PATH := device/alcatel/pop35
 
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+
 # Platform
 TARGET_NO_BOOTLOADER := true
 
