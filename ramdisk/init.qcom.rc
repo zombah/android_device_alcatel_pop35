@@ -500,13 +500,3 @@ service vm_bms /system/bin/vm_bms
     user root
     group root
     disabled
-
-#TR-926884, redirect kmsg to the Android logging system, 'adb logcat -b main -s cat:I'
-service redirect_kmsg /system/bin/logwrapper cat /proc/kmsg
-    disabled
-
-on property:debug.redirect_kmsg=1
-    start redirect_kmsg
-
-on property:debug.redirect_kmsg=0
-    stop redirect_kmsg
