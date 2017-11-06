@@ -5,5 +5,6 @@
 /persist/acc_avg                                            u:object_r:sensors_persist_file:s0
 /persist/prox_avg                                           u:object_r:sensors_persist_file:s0
 
-# wcnss - huawei wifi mac file
-/persist/wlan_mac.bin                                       u:object_r:wcnss_persist_file:s0
+# wcnss - alcatel wifi mac file
+/tctpersist/data/param/macaddr                              u:object_r:wcnss_persist_file:s0
+/dev/block/bootdevice/by-name/tctpersist                    u:object_r:wcnss_device:s0
