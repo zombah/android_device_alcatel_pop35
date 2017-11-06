@@ -136,30 +136,15 @@ service powerup_reason /system/bin/powerup_reason
 #JRD SYS END
 
 on charger
-   #wait /dev/block/bootdevice/by-name/system
-   #mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+   wait /dev/block/bootdevice/by-name/system
+   mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
    chown root system /sys/class/power_supply/bms/current_now
    chown root system /sys/class/power_supply/bms/voltage_ocv
    chmod 0664 /sys/class/power_supply/bms/current_now
    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
    start vm_bms
-   #load_all_props
+   load_all_props
    start qcom-post-boot
-   trigger charger_usb_config
-   class_start charger
-
-#charger mode usb config use all functions
-on charger_usb_config
-   setprop sys.usb.config default,mass_storage,serial_smd,serial_tty,diag,adb
-
-# charger can trigger a full boot from charger mode by signaling this
-# property when the power button is held.
-on property:sys.boot_from_charger_mode=1
-    class_stop charger
-
-    trigger firmware_mounts_complete
-    trigger early-boot
-    trigger boot
 
 on boot
     start rmt_storage
