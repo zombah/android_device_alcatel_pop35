@@ -255,6 +255,9 @@ bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
 
+# USB drivers
+etc/USBDriver.iso
+
 # Venus firmware
 etc/firmware/venus.b00
 etc/firmware/venus.b01
