@@ -184,9 +184,6 @@ vendor/lib/libmm-abl-oem.so
 vendor/lib/libmm-als.so
 vendor/lib/libmm-qdcm.so
 
-# Powerup reason
-bin/powerup_reason
-
 # Qualcomm framework
 bin/irsc_util
 bin/pm-service

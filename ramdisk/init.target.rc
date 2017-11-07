@@ -55,12 +55,6 @@ on fs
     # We chown/chmod /tctpersist again so because mount is run as root + defaults
     chown system system /tctpersist
     chmod 0775 /tctpersist
-    mkdir /tctpersist/powerup_reason 0775 root system
-    chmod 0775 /tctpersist/powerup_reason
-#modify begin by stephen.wu for powerup_reason daemon recording power off charging PR:1066454
-	start time_daemon
-	start powerup_reason
-#modify end by stephen.wu
 
 #add by stephen.wu, add /tctpersist/phone dir for record wifi call, name id
 	mkdir /tctpersist/phone 0777 system system
@@ -115,9 +109,7 @@ service thermal-engine /system/bin/thermal-engine
    group root
 
 service time_daemon /system/bin/time_daemon
-#modify begin by stephen.wu for powerup_reason daemon recording power off charging PR:1066454
-#	class late_start
-#modify end by stephen.wu
+   class late_start
    user root
    group root
 
@@ -125,15 +117,6 @@ service audiod /system/bin/audiod
    class late_start
    user system
    group system
-
-#JRD SYS START to start powerup_reason after time_daemon start
-service powerup_reason /system/bin/powerup_reason
-#modify begin by stephen.wu for powerup_reason daemon recording power off charging PR:1066454
-#	class late_start
-#modify end by stephen.wu
-    seclabel u:r:powerup_reason:s0
-    oneshot
-#JRD SYS END
 
 on charger
    wait /dev/block/bootdevice/by-name/system
