@@ -132,6 +132,7 @@ BOARD_SEPOLICY_UNION += \
     mm-qcamerad.te \
     property.te \
     property_contexts \
+    rmt_storage.te \
     system_server.te \
     wcnss_service.te
 
