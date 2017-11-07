@@ -68,9 +68,6 @@ persist.mm.sta.enable=0
 
 # Memory
 ro.config.max_starting_bg=8
-ro.sys.fw.bservice_enable=true
-ro.sys.fw.bservice_limit=5
-ro.sys.fw.bservice_age=5000
 ro.sys.fw.empty_app_percent=50
 ro.sys.fw.trim_empty_percent=100
 ro.sys.fw.trim_cache_percent=100
@@ -232,7 +229,6 @@ ro.ssv.mccmncspnlist1=20416-998(main),20416-999,20420-998,20416-997,204-996,2190
 ro.ssv.mccmncspnlist2=21901-994,21901-993,21901-992,219-991,21407-990,23410-989
 ro.ssv.operator.choose=TEL
 ro.support.fastload.cdm=false
-ro.sys.fw.bservice_enable=true
 ro.tct.operator=
 ro.tct.product=Pop35
 sys.hwc.gpu_perf_mode=1
@@ -240,4 +236,3 @@ sys.shutdown.tempprotect=true
 sys.shutdown.voltage=3400
 tunnel.audio.encode = false
 wifi.ssid.priority.support=1
-
