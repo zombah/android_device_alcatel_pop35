@@ -22,3 +22,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="TCL/5065D/Pop35:5.1.1/LMY47V/vA73-0:user/release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-alcatel
+
+# Build signing
+ifneq ($(wildcard vendor/paz00/cert/releasekey*),)
+	PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/paz00/cert/releasekey
+endif
