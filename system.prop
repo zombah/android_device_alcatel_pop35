@@ -40,7 +40,7 @@ debug.sf.swaprect=1
 dev.pm.dyn_samplingrate=1
 persist.hwc.enable_vds=1
 ro.opengles.version=196608
-ro.sf.lcd_density=240
+ro.sf.lcd_density=213
 
 # DRM
 drm.service.enabled=true
