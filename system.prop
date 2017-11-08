@@ -120,8 +120,8 @@ telephony.lteOnCdmaDevice=1
 persist.timed.enable=true
 
 # USB
-persist.sys.usb.config=diag,serial_smd,serial_tty,mass_storage
-ro.sys.usb.default.config=diag,serial_smd,serial_tty,mass_storage
+persist.sys.usb.config=default,mass_storage,serial_smd,serial_tty,diag,adb
+ro.sys.usb.default.config=default,mass_storage,serial_smd,serial_tty,diag,adb
 
 # Wifi
 persist.debug.wfd.enable=1
