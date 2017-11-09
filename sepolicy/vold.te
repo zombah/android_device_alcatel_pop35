@@ -1,0 +1,1 @@
+allow vold tct_persist_file:dir {read open ioctl };

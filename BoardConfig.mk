@@ -134,6 +134,7 @@ BOARD_SEPOLICY_UNION += \
     property_contexts \
     rmt_storage.te \
     system_server.te \
+    vold.te \
     wcnss_service.te
 
 # Vold

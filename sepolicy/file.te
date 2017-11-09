@@ -1,2 +1,1 @@
-# wcnss - huawei wifi mac file
-type wcnss_persist_file, file_type;
+type tct_persist_file, file_type;
