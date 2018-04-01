@@ -120,22 +120,7 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-
-BOARD_SEPOLICY_DIRS += \
-    device/alcatel/pop35/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file.te \
-    file_contexts \
-    kernel.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    property.te \
-    property_contexts \
-    rmt_storage.te \
-    system_server.te \
-    vold.te \
-    wcnss_service.te
+BOARD_SEPOLICY_DIRS += device/alcatel/pop35/sepolicy
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun1/file
