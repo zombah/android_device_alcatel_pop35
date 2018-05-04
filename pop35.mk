@@ -49,10 +49,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm8909
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 # CNE
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
