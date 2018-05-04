@@ -1,1 +1,1 @@
-add_lunch_combo cm_pop35-userdebug
+add_lunch_combo lineage_pop35-userdebug

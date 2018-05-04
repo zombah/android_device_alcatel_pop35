@@ -2,7 +2,7 @@
 TARGET_SCREEN_WIDTH := 480
 TARGET_SCREEN_HEIGHT := 854
 
-# Inherit some common CM stuff.
+# Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
@@ -10,7 +10,7 @@ $(call inherit-product, device/alcatel/pop35/pop35.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := pop35
-PRODUCT_NAME := cm_pop35
+PRODUCT_NAME := lineage_pop35
 PRODUCT_BRAND := Alcatel
 PRODUCT_MODEL := 5065D
 PRODUCT_MANUFACTURER := TCL
