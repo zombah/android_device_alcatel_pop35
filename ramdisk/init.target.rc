@@ -151,9 +151,6 @@ on boot
 # add by kui.sun for hang_detect PR:   1054834
     chown system system /dev/RT_Monitor
 
-    # vibrator intensity
-    chown system system /sys/class/timed_output/vibrator/vtg_level
-
 service wcnss-service /system/bin/wcnss_service
     class main
     user system
