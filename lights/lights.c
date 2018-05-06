@@ -40,6 +40,11 @@ static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 
+char const*const BUTTON_FILE
+        = "/sys/class/leds/button-backlight/brightness";
+
+#define MAX_BUTTON_BRIGHTNESS 40
+
 /**
  * device methods
  */
@@ -95,6 +100,20 @@ set_light_backlight(struct light_device_t* dev,
     return err;
 }
 
+static int
+set_light_buttons(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    int err = 0;
+    int brightness = rgb_to_brightness(state);
+    // Scale the brightness to between 0-40, as 40 is the max
+    brightness = ((float) brightness / 255.0) * MAX_BUTTON_BRIGHTNESS;
+    pthread_mutex_lock(&g_lock);
+    err = write_int(BUTTON_FILE, brightness);
+    pthread_mutex_unlock(&g_lock);
+    return err;
+}
+
 /** Close the lights device */
 static int
 close_lights(struct light_device_t *dev)
@@ -119,10 +138,13 @@ static int open_lights(const struct hw_module_t* module, char const* name,
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
 
-    if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
+    if (0 == strcmp(LIGHT_ID_BACKLIGHT, name)) {
         set_light = set_light_backlight;
-    else
+    } else if (0 == strcmp(LIGHT_ID_BUTTONS, name)) {
+        set_light = set_light_buttons;
+    } else {
         return -EINVAL;
+    }
 
     pthread_once(&g_init, init_globals);
 
