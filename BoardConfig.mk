@@ -29,15 +29,13 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a7
 
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.bootloader=L2A73030BR00
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.bootloader=L2A73030BR00
+BOARD_KERNEL_CMDLINE += selinux=1 enforcing=0 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --board R2A73030BR00
 
@@ -47,7 +45,7 @@ BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 #TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel/kernel
 # else uncomment below to build from sauce
 TARGET_KERNEL_SOURCE := kernel/alcatel/msm8909
-TARGET_KERNEL_CONFIG := pixi35-1gb-perf_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod-pop35_defconfig
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
@@ -58,14 +56,14 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x02000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 4864736768 # (4864753152 - 16384)
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
+#BOARD_HAS_LARGE_FILESYSTEM := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 TARGET_USERIMAGES_USE_EXT4 := true
+#TARGET_USERIMAGES_USE_F2FS := true
+BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # TWRP
@@ -73,5 +71,16 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun1/file
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-TW_INCLUDE_CRYPTO := true
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 80
 TW_THEME := portrait_mdpi
+#TW_EXCLUDE_DEFAULT_USB_INIT := true
+#TW_HAS_DOWNLOAD_MODE := true
+#TW_EXTRA_LANGUAGES := true
+#TW_INCLUDE_NTFS_3G := true
+#TW_IGNORE_MISC_WIPE_DATA := true
+
+# Encryption
+TW_INCLUDE_CRYPTO := true
+#TARGET_HW_DISK_ENCRYPTION := true
+#TARGET_KEYMASTER_WAIT_FOR_QSEE := true
