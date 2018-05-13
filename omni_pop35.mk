@@ -14,9 +14,25 @@
 # limitations under the License.
 #
 
+# Release name
+PRODUCT_RELEASE_NAME := pop35
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-$(call inherit-product, device/alcatel/pop35/full_pop35.mk)
+PRODUCT_PACKAGES += \
+	charger_res_images \
+	charger
 
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := pop35
 PRODUCT_NAME := omni_pop35
+PRODUCT_BRAND := Alcatel
+PRODUCT_MODEL := 5065D
+PRODUCT_MANUFACTURER := TCL
+
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
