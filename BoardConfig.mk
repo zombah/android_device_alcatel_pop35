@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/alcatel/pop35
+DEVICE_PATH := device/TURKCELL/P809T70
 
 # Platform
 TARGET_NO_BOOTLOADER := true
@@ -44,8 +44,8 @@ BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 # prebuilt kernel
 #TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel/kernel
 # else uncomment below to build from sauce
-TARGET_KERNEL_SOURCE := kernel/alcatel/msm8909
-TARGET_KERNEL_CONFIG := cyanogenmod-pop35_defconfig
+TARGET_KERNEL_SOURCE := kernel/TURKCELL/msm8909
+TARGET_KERNEL_CONFIG := soon
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
